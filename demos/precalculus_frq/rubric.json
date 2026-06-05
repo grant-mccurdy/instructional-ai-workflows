@@ -1,0 +1,68 @@
+{
+  "demo_id": "precalculus_frq_linear_model",
+  "title": "Precalculus FRQ: Linear Model Interpretation",
+  "max_points": 6,
+  "review_policy": "Every generated draft remains private until a teacher reviews, edits, and approves student-facing language.",
+  "criteria": [
+    {
+      "id": "model_setup",
+      "name": "Model setup",
+      "max_points": 2,
+      "remediation_activity": "Give students two contexts and ask them to define variables, write the linear equation, and label units before solving.",
+      "levels": {
+        "secure": {
+          "points": 2,
+          "next_step": "Keep naming variables and units before substitution."
+        },
+        "developing": {
+          "points": 1,
+          "next_step": "Define the variables and write the equation before substituting values."
+        },
+        "missing": {
+          "points": 0,
+          "next_step": "Start by identifying the two quantities and what the slope means."
+        }
+      }
+    },
+    {
+      "id": "solve_process",
+      "name": "Solving process",
+      "max_points": 2,
+      "remediation_activity": "Use a worked example where students isolate the unknown, check arithmetic, and annotate each algebraic move.",
+      "levels": {
+        "secure": {
+          "points": 2,
+          "next_step": "Continue checking the solved value against the original equation."
+        },
+        "developing": {
+          "points": 1,
+          "next_step": "Show the inverse operation used to isolate the unknown and check one substitution."
+        },
+        "missing": {
+          "points": 0,
+          "next_step": "Practice solving a one-step linear equation before returning to the context."
+        }
+      }
+    },
+    {
+      "id": "context_interpretation",
+      "name": "Context interpretation",
+      "max_points": 2,
+      "remediation_activity": "Ask students to write one sentence explaining whether the numerical answer is reasonable in context.",
+      "levels": {
+        "secure": {
+          "points": 2,
+          "next_step": "Keep connecting the numerical answer to the original context."
+        },
+        "developing": {
+          "points": 1,
+          "next_step": "Add a final sentence explaining what the answer means and include the unit."
+        },
+        "missing": {
+          "points": 0,
+          "next_step": "After solving, answer the original question in words with units."
+        }
+      }
+    }
+  ]
+}

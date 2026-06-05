@@ -23,6 +23,26 @@ teacher-defined rubric
 - LMS adapter architecture
 - Static HTML, Markdown, and PDF output options
 
+## Current Demo
+
+The first public-safe demo is a synthetic Precalculus free-response workflow:
+
+```bash
+make demo
+```
+
+The demo reads a teacher-defined rubric and synthetic rubric-aligned
+observations, then writes:
+
+- `sample_outputs/precalculus_frq/structured-evaluations.json`
+- `sample_outputs/precalculus_frq/reviewer-packet.md`
+- `sample_outputs/precalculus_frq/student-feedback.md`
+- `sample_outputs/precalculus_frq/remediation-plan.md`
+
+The workflow is deterministic and standard-library only. It does not claim to
+grade raw student work automatically; teacher observations and human review
+remain the control points.
+
 ## Planned Structure
 
 ```text
@@ -61,4 +81,6 @@ Canvas should be presented as one adapter, not the product. The core value is th
 
 ## Status
 
-Planning and public-safe scaffolding in progress.
+Active public-safe demo build in progress. The Precalculus FRQ demo now shows
+the rubric-to-feedback path with synthetic submissions, structured evaluation,
+teacher review, student-facing feedback, and remediation planning outputs.

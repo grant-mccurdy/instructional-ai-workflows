@@ -1,0 +1,155 @@
+[
+  {
+    "submission_id": "synthetic_submission_001",
+    "learner_alias": "Synthetic Learner A",
+    "score": 6.0,
+    "max_score": 6.0,
+    "review_required": false,
+    "criterion_results": [
+      {
+        "criterion_id": "model_setup",
+        "criterion_name": "Model setup",
+        "level": "secure",
+        "points": 2.0,
+        "max_points": 2.0,
+        "evidence": "Defines h as hours and writes C = 45 + 30h.",
+        "private_note": "Strong setup; variable and fee/rate structure are clear."
+      },
+      {
+        "criterion_id": "solve_process",
+        "criterion_name": "Solving process",
+        "level": "secure",
+        "points": 2.0,
+        "max_points": 2.0,
+        "evidence": "Solves 165 = 45 + 30h to get h = 4.",
+        "private_note": "Algebra is concise and correct."
+      },
+      {
+        "criterion_id": "context_interpretation",
+        "criterion_name": "Context interpretation",
+        "level": "secure",
+        "points": 2.0,
+        "max_points": 2.0,
+        "evidence": "Interprets the result as 4 hours in context.",
+        "private_note": "Ready for release after tone check."
+      }
+    ],
+    "draft_feedback": {
+      "strengths": [
+        "Model setup: Defines h as hours and writes C = 45 + 30h.",
+        "Solving process: Solves 165 = 45 + 30h to get h = 4.",
+        "Context interpretation: Interprets the result as 4 hours in context."
+      ],
+      "next_steps": [
+        "Continue explaining each algebraic decision with a sentence tied to the context."
+      ],
+      "release_note": "Good work defining the variable and interpreting the solution in context. For the next FRQ, include one short check by substituting your answer back into the equation."
+    },
+    "reviewer_edits": {
+      "approved": true,
+      "release_note": "Good work defining the variable and interpreting the solution in context. For the next FRQ, include one short check by substituting your answer back into the equation."
+    }
+  },
+  {
+    "submission_id": "synthetic_submission_002",
+    "learner_alias": "Synthetic Learner B",
+    "score": 3.0,
+    "max_score": 6.0,
+    "review_required": true,
+    "criterion_results": [
+      {
+        "criterion_id": "model_setup",
+        "criterion_name": "Model setup",
+        "level": "developing",
+        "points": 1.0,
+        "max_points": 2.0,
+        "evidence": "Recognizes the hourly rate but does not place the setup fee in an equation.",
+        "private_note": "Student notices relevant numbers but needs equation structure."
+      },
+      {
+        "criterion_id": "solve_process",
+        "criterion_name": "Solving process",
+        "level": "developing",
+        "points": 1.0,
+        "max_points": 2.0,
+        "evidence": "Uses division but does not subtract the setup fee before dividing.",
+        "private_note": "Computation follows from incomplete setup."
+      },
+      {
+        "criterion_id": "context_interpretation",
+        "criterion_name": "Context interpretation",
+        "level": "developing",
+        "points": 1.0,
+        "max_points": 2.0,
+        "evidence": "Gives an answer in hours but does not check reasonableness.",
+        "private_note": "Student-facing feedback should focus on setup, not effort."
+      }
+    ],
+    "draft_feedback": {
+      "strengths": [
+        "Your response shows a clear attempt to use the task structure."
+      ],
+      "next_steps": [
+        "Define the variables and write the equation before substituting values.",
+        "Show the inverse operation used to isolate the unknown and check one substitution.",
+        "Add a final sentence explaining what the answer means and include the unit."
+      ],
+      "release_note": "You identified the hourly rate and used the correct unit. Before dividing, subtract the setup fee from the target cost, then divide the remaining cost by the hourly rate."
+    },
+    "reviewer_edits": {
+      "approved": true,
+      "release_note": "You identified the hourly rate and used the correct unit. Before dividing, subtract the setup fee from the target cost, then divide the remaining cost by the hourly rate."
+    }
+  },
+  {
+    "submission_id": "synthetic_submission_003",
+    "learner_alias": "Synthetic Learner C",
+    "score": 1.0,
+    "max_score": 6.0,
+    "review_required": true,
+    "criterion_results": [
+      {
+        "criterion_id": "model_setup",
+        "criterion_name": "Model setup",
+        "level": "developing",
+        "points": 1.0,
+        "max_points": 2.0,
+        "evidence": "Uses the setup fee and target value but does not define a variable or write the model.",
+        "private_note": "Student has a useful first arithmetic step."
+      },
+      {
+        "criterion_id": "solve_process",
+        "criterion_name": "Solving process",
+        "level": "missing",
+        "points": 0.0,
+        "max_points": 2.0,
+        "evidence": "Stops after subtracting and does not divide by the hourly rate.",
+        "private_note": "Needs a focused next step, not a full re-teach."
+      },
+      {
+        "criterion_id": "context_interpretation",
+        "criterion_name": "Context interpretation",
+        "level": "missing",
+        "points": 0.0,
+        "max_points": 2.0,
+        "evidence": "Reports 120 without explaining what quantity it represents.",
+        "private_note": "Teacher should check whether the student understands cost remaining versus hours."
+      }
+    ],
+    "draft_feedback": {
+      "strengths": [
+        "Your response shows a clear attempt to use the task structure."
+      ],
+      "next_steps": [
+        "Define the variables and write the equation before substituting values.",
+        "Practice solving a one-step linear equation before returning to the context.",
+        "After solving, answer the original question in words with units."
+      ],
+      "release_note": "Your subtraction finds the cost left after the setup fee. The next step is to divide that remaining cost by the hourly rate, then state the answer in hours."
+    },
+    "reviewer_edits": {
+      "approved": true,
+      "release_note": "Your subtraction finds the cost left after the setup fee. The next step is to divide that remaining cost by the hourly rate, then state the answer in hours."
+    }
+  }
+]
