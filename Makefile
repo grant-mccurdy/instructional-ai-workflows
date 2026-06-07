@@ -1,6 +1,8 @@
-.PHONY: demo precalculus-demo
+.PHONY: all demo precalculus-demo
 
 PYTHON ?= python3
+
+all: demo
 
 demo: precalculus-demo
 
