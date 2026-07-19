@@ -1,6 +1,12 @@
 # Instructional AI Workflows
 
+[![Quality](https://github.com/grant-mccurdy/instructional-ai-workflows/actions/workflows/quality.yml/badge.svg)](https://github.com/grant-mccurdy/instructional-ai-workflows/actions/workflows/quality.yml)
+
 LMS-agnostic instructional workflow prototypes for teacher-controlled grading, feedback, review, and remediation artifacts.
+
+**[Open the reviewer demo](https://grant-mccurdy.github.io/instructional-ai-workflows/)** | **[View the portfolio](https://grant-mccurdy.github.io/)**
+
+![Teacher-controlled rubric review demo](docs/images/workflow-demo.png)
 
 This repository is intended to demonstrate controlled AI-assisted instructional workflows. It should not be framed as automatic test grading. The public framing is:
 
@@ -43,30 +49,31 @@ The workflow is deterministic and standard-library only. It does not claim to
 grade raw student work automatically; teacher observations and human review
 remain the control points.
 
-## Planned Structure
+## Reviewer Path
+
+1. Open the live demo and inspect the review status, criterion evidence, and approved note for each synthetic learner.
+2. Read [`core/workflow.py`](core/workflow.py) for the deterministic evaluation and remediation logic.
+3. Run `make check` to regenerate outputs, validate the release boundary, render the static demo, and exercise desktop/mobile views.
+
+The public demo uses pre-authored teacher observations, not raw student work or model-generated grades. Its main design claim is workflow control: private evidence remains separate from the reviewed student-facing artifact.
+
+## Repository Structure
 
 ```text
 instructional-ai-workflows/
-├── core/
-│   ├── grading/
-│   ├── feedback_generation/
-│   ├── review_generation/
-│   └── remediation_generation/
-├── adapters/
-│   ├── canvas/
-│   ├── static_html/
-│   └── markdown/
-├── demos/
-│   ├── precalculus_frq/
-│   └── ap_statistics_frq/
-├── prompts/
-├── sample_outputs/
+├── core/                         # deterministic workflow logic
+├── demos/precalculus_frq/        # synthetic rubric and observations
+├── sample_outputs/precalculus_frq/
+│   ├── structured-evaluations.json
+│   ├── reviewer-packet.md
+│   ├── student-feedback.md
+│   └── remediation-plan.md
 ├── docs/
 │   ├── workflow-overview.md
 │   ├── human-in-the-loop.md
 │   └── privacy-and-safety.md
-├── screenshots/
-└── README.md
+├── pages/                        # static demo styling
+└── scripts/                      # validation, rendering, visual smoke test
 ```
 
 ## Public Safety Rules
@@ -81,6 +88,14 @@ Canvas should be presented as one adapter, not the product. The core value is th
 
 ## Status
 
-Active public-safe demo build in progress. The Precalculus FRQ demo now shows
-the rubric-to-feedback path with synthetic submissions, structured evaluation,
+Active public-safe prototype. The Precalculus FRQ demo covers the complete
+rubric-to-feedback path with synthetic submissions, structured evaluation,
 teacher review, student-facing feedback, and remediation planning outputs.
+
+## Licensing
+
+- Code is available under the [MIT License](LICENSE).
+- Original documentation and generated visual content are available under [CC BY 4.0](LICENSE-CONTENT.md).
+- Original synthetic datasets are available under [CC BY 4.0](LICENSE-DATA.md).
+
+Third-party materials, trademarks, personal likenesses, and any acquired source material are excluded unless explicitly stated otherwise.
