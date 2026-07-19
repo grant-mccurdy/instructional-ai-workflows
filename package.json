@@ -1,0 +1,14 @@
+{
+  "name": "instructional-ai-workflows",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Visual validation tooling for the public instructional workflow demo.",
+  "scripts": {
+    "check": "make check",
+    "pages": "make pages",
+    "visual-smoke": "make visual-smoke"
+  },
+  "devDependencies": {
+    "playwright": "^1.54.1"
+  }
+}

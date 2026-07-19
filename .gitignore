@@ -10,3 +10,6 @@ data/private/
 data/raw/
 outputs/private/
 screenshots/private/
+
+node_modules/
+.pages/
