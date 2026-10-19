@@ -10,7 +10,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 
-from core.workflow import build_remediation_plan, evaluate_submission
+from core.workflow import approved_release_note, build_remediation_plan, evaluate_submission
 
 
 DEMO_DIR = Path(__file__).resolve().parent
@@ -40,7 +40,7 @@ def write_reviewer_packet(path: Path, evaluations: list[dict], rubric: dict) -> 
                 f"## {evaluation['learner_alias']}",
                 "",
                 f"Score: {evaluation['score']} / {evaluation['max_score']}",
-                f"Review required: {'yes' if evaluation['review_required'] else 'no'}",
+                f"Flagged before teacher review: {'yes' if evaluation['review_required'] else 'no'}",
                 "",
                 "### Criterion Evidence",
                 "",
@@ -57,9 +57,9 @@ def write_reviewer_packet(path: Path, evaluations: list[dict], rubric: dict) -> 
         lines.extend(
             [
                 "",
-                "### Approved Student-Facing Note",
+                "### Teacher Review",
                 "",
-                evaluation["reviewer_edits"]["release_note"],
+                approved_release_note(evaluation) or "Awaiting approval. No student-facing note is released.",
                 "",
             ]
         )
@@ -67,18 +67,22 @@ def write_reviewer_packet(path: Path, evaluations: list[dict], rubric: dict) -> 
 
 
 def write_student_feedback(path: Path, evaluations: list[dict]) -> None:
+    # Validate the entire batch before writing or replacing an artifact.
+    release_notes = [approved_release_note(evaluation) for evaluation in evaluations]
+    if any(note is None for note in release_notes):
+        raise ValueError("Student feedback withheld: every note needs explicit approval and nonempty text.")
     lines = [
         "# Reviewed Student Feedback: Precalculus FRQ",
         "",
         "These notes are synthetic examples of student-facing feedback after teacher review.",
         "",
     ]
-    for evaluation in evaluations:
+    for evaluation, note in zip(evaluations, release_notes):
         lines.extend(
             [
                 f"## {evaluation['learner_alias']}",
                 "",
-                evaluation["reviewer_edits"]["release_note"],
+                note,
                 "",
             ]
         )

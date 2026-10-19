@@ -10,6 +10,15 @@ from dataclasses import dataclass
 from typing import Any
 
 
+def approved_release_note(evaluation: dict[str, Any]) -> str | None:
+    """Return release-ready text only after explicit approval of a nonempty note."""
+    edits = evaluation.get("reviewer_edits", {})
+    note = edits.get("release_note")
+    if edits.get("approved") is True and isinstance(note, str) and note.strip():
+        return note.strip()
+    return None
+
+
 @dataclass(frozen=True)
 class CriterionResult:
     criterion_id: str

@@ -7,7 +7,7 @@ Review policy: Every generated draft remains private until a teacher reviews, ed
 ## Synthetic Learner A
 
 Score: 6.0 / 6.0
-Review required: no
+Flagged before teacher review: no
 
 ### Criterion Evidence
 
@@ -21,14 +21,14 @@ Review required: no
   Evidence: Interprets the result as 4 hours in context.
   Private note: Ready for release after tone check.
 
-### Approved Student-Facing Note
+### Teacher Review
 
 Good work defining the variable and interpreting the solution in context. For the next FRQ, include one short check by substituting your answer back into the equation.
 
 ## Synthetic Learner B
 
 Score: 3.0 / 6.0
-Review required: yes
+Flagged before teacher review: yes
 
 ### Criterion Evidence
 
@@ -42,14 +42,14 @@ Review required: yes
   Evidence: Gives an answer in hours but does not check reasonableness.
   Private note: Student-facing feedback should focus on setup, not effort.
 
-### Approved Student-Facing Note
+### Teacher Review
 
 You identified the hourly rate and used the correct unit. Before dividing, subtract the setup fee from the target cost, then divide the remaining cost by the hourly rate.
 
 ## Synthetic Learner C
 
 Score: 1.0 / 6.0
-Review required: yes
+Flagged before teacher review: yes
 
 ### Criterion Evidence
 
@@ -63,6 +63,6 @@ Review required: yes
   Evidence: Reports 120 without explaining what quantity it represents.
   Private note: Teacher should check whether the student understands cost remaining versus hours.
 
-### Approved Student-Facing Note
+### Teacher Review
 
 Your subtraction finds the cost left after the setup fee. The next step is to divide that remaining cost by the hourly rate, then state the answer in hours.

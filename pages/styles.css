@@ -1,16 +1,16 @@
 :root {
   color-scheme: light;
-  --ink: #121212;
-  --paper: #f6f5f0;
+  --ink: #203344;
+  --paper: #ffffff;
   --white: #ffffff;
-  --line: #c7c6bf;
-  --muted: #5c5d58;
-  --signal: #ecff61;
+  --line: #dce3e8;
+  --muted: #526575;
+  --signal: #315c78;
   --ready: #247257;
   --review: #b34922;
-  --developing: #f2c94c;
-  --missing: #df6d56;
-  --secure: #70b89f;
+  --developing: #f6eddb;
+  --missing: #f8e5e0;
+  --secure: #e0ede8;
 }
 
 * { box-sizing: border-box; }
@@ -27,16 +27,17 @@ body {
 
 a { color: inherit; }
 a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; }
+.table-wrap:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; }
 
 .masthead {
-  background: var(--ink);
-  color: var(--white);
-  padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(3rem, 7vw, 6rem);
+  background: var(--white);
+  color: var(--ink);
+  padding: 0 clamp(1.25rem, 5vw, 5rem) clamp(3rem, 6vw, 5rem);
 }
 
 nav {
   align-items: center;
-  border-bottom: 1px solid #484848;
+  border-bottom: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   min-height: 72px;
@@ -50,10 +51,10 @@ nav a { font-size: 0.9rem; font-weight: 700; text-decoration: none; }
   align-items: end;
   display: grid;
   gap: clamp(2rem, 6vw, 7rem);
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+  grid-template-columns: minmax(0, 1.65fr) minmax(260px, 0.75fr);
   margin: 0 auto;
   max-width: 1440px;
-  padding-top: clamp(3.5rem, 9vw, 8rem);
+  padding-top: clamp(3rem, 6vw, 5rem);
 }
 
 .eyebrow {
@@ -67,15 +68,16 @@ nav a { font-size: 0.9rem; font-weight: 700; text-decoration: none; }
 h1, h2, p { margin-top: 0; }
 
 h1 {
-  font-size: clamp(2.8rem, 6.5vw, 6.8rem);
-  letter-spacing: 0;
-  line-height: 0.95;
+  font-size: clamp(2.6rem, 4.6vw, 4.7rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
   margin-bottom: 1.5rem;
-  max-width: 13ch;
+  max-width: 20ch;
 }
 
 .lede {
-  color: #cfcfc9;
+  color: var(--muted);
   font-size: clamp(1rem, 1.5vw, 1.25rem);
   line-height: 1.55;
   margin-bottom: 0;
@@ -83,20 +85,24 @@ h1 {
 }
 
 .summary {
-  border-top: 1px solid #64645f;
+  border-top: 1px solid var(--line);
   margin: 0;
 }
 
 .summary div {
   align-items: baseline;
-  border-bottom: 1px solid #64645f;
+  border-bottom: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   padding: 1.1rem 0;
 }
 
-.summary dt { color: #b9b9b2; font-size: 0.84rem; }
-.summary dd { font-size: 2rem; font-weight: 800; margin: 0; }
+.summary dt { color: var(--muted); font-size: 0.84rem; }
+.summary dd { font-size: 2rem; font-weight: 500; margin: 0; }
+.demo-context { color: var(--muted); font-size: 0.8rem; margin-top: 1.3rem; line-height: 1.6; }
+.hero-links { align-items: center; display: flex; flex-wrap: wrap; gap: 1.2rem; font-size: 0.86rem; margin-top: 1.5rem; }
+.primary-link { background: var(--signal); color: white; padding: 0.85rem 1.1rem; border-radius: 4px; text-decoration: none; }
+.review-history { color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 1rem 0 0; }
 
 main { margin: 0 auto; max-width: 1440px; padding: 0 clamp(1.25rem, 4vw, 4rem) 5rem; }
 
@@ -108,9 +114,9 @@ main { margin: 0 auto; max-width: 1440px; padding: 0 clamp(1.25rem, 4vw, 4rem) 5
   padding: clamp(3rem, 7vw, 6rem) 0;
 }
 
-.workflow h2, .learner h2 { font-size: clamp(1.6rem, 3vw, 2.7rem); line-height: 1.05; }
+.workflow h2, .learner h2 { font-size: clamp(1.6rem, 2.5vw, 2.3rem); font-weight: 500; line-height: 1.15; }
 .workflow ol { display: grid; gap: 1px; grid-template-columns: repeat(5, 1fr); list-style: none; margin: 0; padding: 0; }
-.workflow li { background: var(--white); min-height: 145px; padding: 1rem; }
+.workflow li { background: #f2f6f8; min-height: 145px; padding: 1rem; }
 .workflow li span, .workflow li small { color: var(--muted); display: block; font-size: 0.75rem; }
 .workflow li strong { display: block; font-size: 1.05rem; margin: 2.4rem 0 0.25rem; }
 .policy { grid-column: 2; line-height: 1.55; margin: 0; max-width: 72ch; }
@@ -138,7 +144,7 @@ tbody td:last-child { line-height: 1.5; width: 48%; }
 .level-missing { background: var(--missing); }
 
 .release-note {
-  background: var(--white);
+  background: #f2f6f8;
   border-left: 5px solid var(--signal);
   margin-top: 1.5rem;
   max-width: 900px;
@@ -155,7 +161,7 @@ footer {
   justify-content: space-between;
   padding: 2rem clamp(1.25rem, 4vw, 4rem);
 }
-footer p { color: #b9b9b2; margin: 0; }
+footer p { color: #dce3e8; margin: 0; }
 footer a { font-weight: 700; }
 
 @media (max-width: 900px) {
