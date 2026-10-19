@@ -6,8 +6,6 @@ LMS-agnostic instructional workflow prototypes for teacher-controlled grading, f
 
 **[Open the reviewer demo](https://grant-mccurdy.github.io/instructional-ai-workflows/)** | **[View the portfolio](https://grant-mccurdy.github.io/)**
 
-![Teacher-controlled rubric review demo](docs/images/workflow-demo.png)
-
 This repository is intended to demonstrate controlled AI-assisted instructional workflows. It should not be framed as automatic test grading. The public framing is:
 
 ```text
@@ -51,11 +49,11 @@ remain the control points.
 
 ## Reviewer Path
 
-1. Open the live demo and inspect the review status, criterion evidence, and approved note for each synthetic learner.
+1. Open the static walkthrough and inspect the original rubric flags, recorded teacher approval, criterion evidence, and approved note for each synthetic learner.
 2. Read [`core/workflow.py`](core/workflow.py) for the deterministic evaluation and remediation logic.
 3. Run `make check` to regenerate outputs, validate the release boundary, render the static demo, and exercise desktop/mobile views.
 
-The public demo uses pre-authored teacher observations, not raw student work or model-generated grades. Its main design claim is workflow control: private evidence remains separate from the reviewed student-facing artifact.
+The public demo uses pre-authored teacher observations, not raw student work or model-generated grades. Its main design claim is workflow control: private evidence remains separate from the reviewed student-facing artifact. The export rejects a batch if any note lacks explicit boolean approval or nonempty text; the HTML renderer withholds unapproved notes. `make release-test` exercises these boundaries with invalid approvals and checks that private notes stay out of the student export.
 
 ## Repository Structure
 

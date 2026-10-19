@@ -6,9 +6,12 @@ from __future__ import annotations
 import html
 import json
 import shutil
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from core.workflow import approved_release_note
 OUTPUT = ROOT / ".pages"
 DATA = ROOT / "sample_outputs" / "precalculus_frq" / "structured-evaluations.json"
 RUBRIC = ROOT / "demos" / "precalculus_frq" / "rubric.json"
@@ -19,8 +22,14 @@ def esc(value: object) -> str:
 
 
 def learner_section(evaluation: dict) -> str:
-    status = "Review required" if evaluation["review_required"] else "Ready after final check"
-    status_class = "review" if evaluation["review_required"] else "ready"
+    note = approved_release_note(evaluation)
+    status = "Teacher approved" if note is not None else "Awaiting teacher approval"
+    status_class = "ready" if note is not None else "review"
+    review_history = "Flagged by rubric checks; reviewed by the teacher." if evaluation["review_required"] else "Rubric checks passed; reviewed by the teacher."
+    if note is None:
+        review_history = "Draft held. Teacher review is required before release."
+    note_heading = "Approved student-facing note" if note is not None else "Student-facing note withheld"
+    note_text = note if note is not None else "No feedback is released until the teacher approves a completed note."
     rows = "".join(
         f"""
         <tr>
@@ -43,15 +52,16 @@ def learner_section(evaluation: dict) -> str:
           <span class="status {status_class}">{status}</span>
         </div>
       </div>
-      <div class="table-wrap">
+      <p class="review-history">{review_history}</p>
+      <div class="table-wrap" role="region" aria-label="Rubric evidence for {esc(evaluation['learner_alias'])}" tabindex="0">
         <table>
           <thead><tr><th>Criterion</th><th>Level</th><th>Score</th><th>Teacher evidence</th></tr></thead>
           <tbody>{rows}</tbody>
         </table>
       </div>
       <div class="release-note">
-        <p class="eyebrow">Approved student-facing note</p>
-        <p>{esc(evaluation['reviewer_edits']['release_note'])}</p>
+        <p class="eyebrow">{note_heading}</p>
+        <p>{esc(note_text)}</p>
       </div>
     </section>"""
 
@@ -60,9 +70,6 @@ def main() -> int:
     evaluations = json.loads(DATA.read_text(encoding="utf-8"))
     rubric = json.loads(RUBRIC.read_text(encoding="utf-8"))
     review_count = sum(item["review_required"] for item in evaluations)
-    average = sum(item["score"] for item in evaluations) / sum(
-        item["max_score"] for item in evaluations
-    )
     learners = "".join(learner_section(item) for item in evaluations)
 
     page = f"""<!doctype html>
@@ -85,14 +92,16 @@ def main() -> int:
     </nav>
     <div class="hero">
       <div>
-        <p class="eyebrow">Synthetic Precalculus FRQ</p>
-        <h1>Teacher-controlled review, from rubric evidence to approved feedback.</h1>
-        <p class="lede">A deterministic demonstration of how structured observations can support consistent feedback while keeping every release decision with the teacher.</p>
+        <p class="eyebrow">Workflow automation · Synthetic example</p>
+        <h1>Consistent feedback.<br>Human judgment.</h1>
+        <p class="lede">Turn rubric evidence into a review packet and approved feedback. Every release requires an explicit teacher decision.</p>
+        <p class="demo-context">Static walkthrough · Three fictional learners · No live AI calls</p>
+        <div class="hero-links"><a class="primary-link" href="#main">Inspect the workflow <span aria-hidden="true">↓</span></a><a href="https://github.com/grant-mccurdy/instructional-ai-workflows">Review the source</a></div>
       </div>
       <dl class="summary" aria-label="Demo summary">
         <div><dt>Submissions</dt><dd>{len(evaluations)}</dd></div>
-        <div><dt>Need review</dt><dd>{review_count}</dd></div>
-        <div><dt>Points earned</dt><dd>{average:.0%}</dd></div>
+        <div><dt>Flagged before review</dt><dd>{review_count}</dd></div>
+        <div><dt>Teacher-approved notes</dt><dd>{sum(approved_release_note(item) is not None for item in evaluations)}</dd></div>
       </dl>
     </div>
   </header>
@@ -110,6 +119,7 @@ def main() -> int:
         <li><span>05</span><strong>Release</strong><small>Student-safe artifact</small></li>
       </ol>
       <p class="policy"><strong>Review policy:</strong> {esc(rubric['review_policy'])}</p>
+      <p class="policy">This saved example begins with teacher-authored observations and ends with recorded approvals. Rubric flags describe the initial review needs; approval determines whether a note may be exported.</p>
     </section>
     <div class="learner-list">{learners}</div>
   </main>

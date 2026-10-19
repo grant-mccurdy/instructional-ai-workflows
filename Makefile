@@ -4,7 +4,11 @@ PYTHON ?= python3
 
 all: check
 
-check: demo validate pages visual-smoke
+check: demo validate release-test pages visual-smoke
+
+.PHONY: release-test
+release-test:
+	$(PYTHON) -m unittest discover -s tests -v
 
 demo: precalculus-demo
 
